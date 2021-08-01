@@ -79,3 +79,17 @@
     document.body.classList.add('cookies-enabled');
   }
 })();
+
+// ScrollReveal //
+
+window.sr = ScrollReveal()
+sr.reveal('.header', {
+  duration: 2000,
+  origin: 'top'
+});
+sr.reveal('.video', {
+  duration: 2000,
+  origin: 'right',
+  distance: '300px'
+});
+
