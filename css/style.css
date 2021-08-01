@@ -522,6 +522,10 @@ video {
   border-radius: 5px;
 }
 
+video::-internal-media-controls-overplay-cast-button {
+  display: none;
+}
+
 .splash__cta {
   text-align: center;
 }
