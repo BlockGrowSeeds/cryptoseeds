@@ -46,38 +46,6 @@
       toggleMenuButton.classList.remove('header__toggle-menu--mouse-focus');
     });
   }
-
-  var lazyImages = document.querySelectorAll('img[data-src]');
-  if ('IntersectionObserver' in window
-      && 'IntersectionObserverEntry' in window
-      && 'isIntersecting' in window.IntersectionObserverEntry.prototype) {
-    var lazyImageObserver = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.src = entry.target.dataset.src;
-          lazyImageObserver.unobserve(entry.target);
-        }
-      })
-    });
-    for (var i = 0; i < lazyImages.length; i++) {
-      lazyImageObserver.observe(lazyImages[i]);
-    }
-  } else {
-    for (var i = 0; i < lazyImages.length; i++) {
-      lazyImages[i].src = lazyImages[i].dataset.src;
-    }
-  }
-
-  if (/iPad|iPhone|iPod/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) {
-    document.body.classList.add('is-mobile');
-  }
-  if (/Safari/.test(navigator.userAgent) && !/CriOS/.test(navigator.userAgent)) {
-    document.body.classList.add('is-safari');
-  }
-
-  if ((document.cookie = 'cookies_enabled=1') && (document.cookie.indexOf('cookies_enabled=') !== -1) && (document.cookie = 'cookies_enabled=1; expires=Thu, 01-Jan-1970 00:00:01 GMT')) {
-    document.body.classList.add('cookies-enabled');
-  }
 })();
 
 // ScrollReveal //
@@ -93,3 +61,42 @@ sr.reveal('.video', {
   distance: '300px'
 });
 
+// //Get the button
+// var button__top = document.getElementById("button__top");
+
+// // When the user scrolls down 20px from the top of the document, show the button
+// window.onscroll = function() {scrollFunction()};
+
+// function scrollFunction() {
+//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+//     button__top.style.display = "block";
+//   } else {
+//     button__top.style.display = "none";
+//   }
+// }
+
+// // When the user clicks on the button, scroll to the top of the document
+// function topFunction() {
+//   document.body.scrollTop = 0;
+//   document.documentElement.scrollTop = 0;
+// }
+
+window.onscroll = function() {
+  if(document.documentElement.scrollTop > 20) {
+    document.querySelector('.button__container').classList.add('show');
+  }else{
+    document.querySelector('.button__container').classList.remove('show');
+  }
+}
+
+/*function topFunction() {
+document.window.scrollTop = 0;
+document.documentElement.scrollTop = 0;
+}*/
+
+document.querySelector('.button__container').addEventListener('click', () => {
+window.screenTop({
+top: 0,
+behavior: 'smooth'
+});
+});
